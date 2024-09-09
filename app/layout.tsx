@@ -5,8 +5,11 @@ import {
     SignedOut,
     UserButton,
 } from "@clerk/nextjs"
-import "./globals.css"
+
 import { Metadata } from "next"
+import ModalProvider from "@/providers/modal-provider"
+
+import "./globals.css"
 
 export const metadata: Metadata = {
     title: "Admin Dashboard",
@@ -28,6 +31,7 @@ export default function RootLayout({
                     <SignedIn>
                         <UserButton />
                     </SignedIn>
+                    <ModalProvider />
                     {children}
                 </body>
             </html>
