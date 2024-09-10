@@ -6,8 +6,10 @@ import {
     UserButton,
 } from "@clerk/nextjs"
 
-import { Metadata } from "next"
+import ToasterProvider from "@/providers/toast-provider"
 import ModalProvider from "@/providers/modal-provider"
+
+import { Metadata } from "next"
 
 import "./globals.css"
 
@@ -31,6 +33,7 @@ export default function RootLayout({
                     <SignedIn>
                         <UserButton />
                     </SignedIn>
+                    <ToasterProvider />
                     <ModalProvider />
                     {children}
                 </body>
