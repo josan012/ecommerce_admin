@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 
+import Navbar from "@/components/navbar"
 import prismadb from "@/lib/prismadb"
 
 const Dashboard = async ({
@@ -28,7 +29,7 @@ const Dashboard = async ({
     } else {
         return (
             <>
-                <div>This will be a navbar</div>
+                <Navbar />
                 {children}
             </>
         )
