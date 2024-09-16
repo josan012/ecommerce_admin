@@ -13,10 +13,10 @@ interface ModalProps {
     description: string
     isOpen: boolean
     onClose: () => void
-    children?: React.ReactNode
+    children: React.ReactNode
 }
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
     title,
     description,
     isOpen,
@@ -36,12 +36,8 @@ const Modal: React.FC<ModalProps> = ({
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>{description}</DialogDescription>
                 </DialogHeader>
-                <div>
-                    {children}
-                </div>
+                <div>{children}</div>
             </DialogContent>
         </Dialog>
     )
 }
-
-export default Modal

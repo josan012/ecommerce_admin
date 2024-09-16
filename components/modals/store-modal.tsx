@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { useStoreModal } from "@/hooks/use-store-modal"
-import Modal from "@/components/ui/modal"
+import { Modal } from "@/components/ui/modal"
 import {
     Form,
     FormControl,
@@ -24,7 +24,7 @@ const formSchema = z.object({
     name: z.string().min(1),
 })
 
-const StoreModal = () => {
+export const StoreModal = () => {
     const storeModal = useStoreModal()
 
     const [loading, setLoading] = useState(false)
@@ -74,7 +74,7 @@ const StoreModal = () => {
                                                 {...field}
                                             />
                                         </FormControl>
-                                        <FormMessage></FormMessage>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
@@ -97,5 +97,3 @@ const StoreModal = () => {
         </Modal>
     )
 }
-
-export default StoreModal

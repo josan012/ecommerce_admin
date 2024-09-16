@@ -27,7 +27,7 @@ export async function GET(
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { storeId: string, billboardId: string } }
+    { params }: { params: { storeId: string; billboardId: string } }
 ) {
     try {
         const { userId } = auth()
@@ -55,8 +55,8 @@ export async function PATCH(
         const storeByUserId = await prismadb.store.findFirst({
             where: {
                 id: params.storeId,
-                userId
-            }
+                userId,
+            },
         })
 
         if (!storeByUserId) {
@@ -69,7 +69,7 @@ export async function PATCH(
             },
             data: {
                 label,
-                imageUrl
+                imageUrl,
             },
         })
 
@@ -82,7 +82,7 @@ export async function PATCH(
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { storeId: string, billboardId: string } }
+    { params }: { params: { storeId: string; billboardId: string } }
 ) {
     try {
         const { userId } = auth()
@@ -95,11 +95,13 @@ export async function DELETE(
             return new NextResponse("Billboard id is required", { status: 400 })
         }
 
+        console.log(params.billboardId)
+
         const storeByUserId = await prismadb.store.findFirst({
             where: {
                 id: params.storeId,
-                userId
-            }
+                userId,
+            },
         })
 
         if (!storeByUserId) {

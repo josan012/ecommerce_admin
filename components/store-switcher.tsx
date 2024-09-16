@@ -34,7 +34,7 @@ interface StoreSwitcherProps extends PopoverTriggerProps {
     items: Store[]
 }
 
-const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
+export default function StoreSwitcher ({ className, items = [] }: StoreSwitcherProps) {
     const storeModal = useStoreModal()
     const params = useParams()
     const router = useRouter()
@@ -51,7 +51,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
     const [open, setOpen] = useState(false)
     const onStoreSelect = (store: { value: string; label: string }) => {
         setOpen(false)
-        router.push(`${store.value}`)
+        router.push(`/${store.value}`)
     }
 
     return (
@@ -115,5 +115,3 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
         </Popover>
     )
 }
-
-export default StoreSwitcher

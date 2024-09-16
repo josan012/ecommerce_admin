@@ -4,13 +4,13 @@ import { redirect } from "next/navigation"
 import Navbar from "@/components/navbar"
 import prismadb from "@/lib/prismadb"
 
-const Dashboard = async ({
+export default async function DashboardLayout({
     children,
     params,
 }: {
     children: React.ReactNode
     params: { storeId: string }
-}) => {
+}) {
     const { userId } = auth()
 
     if (!userId) {
@@ -26,14 +26,12 @@ const Dashboard = async ({
 
     if (!store) {
         redirect("/")
-    } else {
-        return (
-            <>
-                <Navbar />
-                {children}
-            </>
-        )
     }
-}
 
-export default Dashboard
+    return (
+        <>
+            <Navbar />
+            {children}
+        </>
+    )
+}
