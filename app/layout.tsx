@@ -12,6 +12,7 @@ import ModalProvider from "@/providers/modal-provider"
 import { Metadata } from "next"
 
 import "./globals.css"
+import { ThemeProvider } from "@/providers/theme-provider"
 
 export const metadata: Metadata = {
     title: "Admin Dashboard",
@@ -27,13 +28,20 @@ export default function RootLayout({
         <ClerkProvider>
             <html lang="en">
                 <body>
-                    <SignedOut>
-                        <RedirectToSignIn />
-                    </SignedOut>
-                    <SignedIn>{/* <UserButton /> */}</SignedIn>
-                    <ToasterProvider />
-                    <ModalProvider />
-                    {children}
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="dark"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <SignedOut>
+                            <RedirectToSignIn />
+                        </SignedOut>
+                        <SignedIn />
+                        <ToasterProvider />
+                        <ModalProvider />
+                        {children}
+                    </ThemeProvider>
                 </body>
             </html>
         </ClerkProvider>
