@@ -3,7 +3,6 @@ import {
     RedirectToSignIn,
     SignedIn,
     SignedOut,
-    UserButton,
 } from "@clerk/nextjs"
 
 import ToasterProvider from "@/providers/toast-provider"
